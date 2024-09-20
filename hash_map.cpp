@@ -88,5 +88,8 @@ void hash_map::get_bucket_sizes(size_t *buckets)
 
 hash_map::~hash_map()
 {
-
+	for(int i =0; i < _capacity; i++){
+		_head[i].~hash_list();
+	}
+	delete _head();
 }
