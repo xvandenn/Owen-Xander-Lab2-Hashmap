@@ -26,9 +26,16 @@ hash_map &hash_map::operator=(const hash_map &other)
     if(_head == other._head)
         return *this;
     this->~hash_map();
-	hash_map map = hash_map(other);
-	hash_map& ref = map;
-	return ref;
+	int cap = other._capacity;
+	hash_list* arr = new hash_list[cap];
+	for(int i = 0; i < cap; i++)
+	{
+		arr[i] = hash_list(other._head[i]);
+	}
+	_head = arr;
+	_size = other._size;
+	_capacity = other._capacity;
+	return *this;
 
 }
 
