@@ -45,8 +45,12 @@ bool hash_map::remove(int key)
 {
     int hash_key = (key < 0 ? key * -1: key) % _capacity; //hashing function
 
-    if(_head[hash_key].remove(key)) //only decrement size if something was removed
+    if(_head[hash_key].remove(key))
+    { //only decrement size if something was removed
         size -= 1;
+        return true;
+    }
+    return false;
 }
 
 size_t hash_map::get_size() const
