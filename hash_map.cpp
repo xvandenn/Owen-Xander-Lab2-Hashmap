@@ -16,7 +16,6 @@ hash_map::hash_map(const hash_map &other)
 		for(int i = 0; i < cap; i++){
 			arr[i] = hash_list(other._head[i]);
 		}
-		delete _head;
 		_head = arr;
 		_size = other._size;
 		_capacity = other._capacity;
@@ -101,6 +100,7 @@ hash_map::~hash_map()
 {
 	for(int i =0; i < (int)_capacity; i++){
 		_head[i].~hash_list();
+		delete _head[i];
 	}
 	delete _head;
 }
