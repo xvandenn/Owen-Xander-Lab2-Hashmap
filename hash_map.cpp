@@ -15,7 +15,7 @@ hash_map::hash_map(const hash_map &other)
 		_size = other._size;
 		_capacity = other._capacity;
 		hash_list* arr = new hash_list[other._capacity]; //Revert to size if dont work
-		for(int i = 0; i < cap; i++){
+		for(int i = 0; i < (int)other._capacity; i++){
 			arr[i] = hash_list(other._head[i]);
 		}
 		
