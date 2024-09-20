@@ -27,7 +27,7 @@ hash_map &hash_map::operator=(const hash_map &other)
     if(_head == other._head)
         return *this;
     this->~hash_map();
-    *this = hash_map(other._capacity);
+    _head = new hash_list[_capacity];
     for(int i = 0; i < (int)_capacity; i++)
         _head[i] = other._head[i];
 
