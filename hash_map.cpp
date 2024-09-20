@@ -30,8 +30,7 @@ hash_map &hash_map::operator=(const hash_map &other)
     _head = new hash_list[_capacity];
     for(int i = 0; i < (int)_capacity; i++)
 	{
-		_head[i] = hash_list();
-		_head[i] = other._head[i];
+		_head[i] = hash_list(other._head[i]);
 	}
 	_size = other._size;
     return *this;
