@@ -27,8 +27,8 @@ hash_map &hash_map::operator=(const hash_map &other)
     if(_head == other._head)
         return *this;
     this->~hash_map();
-    this->hash_map(other._capacity);
-    for(int i = 0; i < _capacity; i++)
+    *this = hash_map(other._capacity);
+    for(int i = 0; i < (int)_capacity; i++)
         _head[i] = other._head[i];
 
     return *this;
@@ -37,7 +37,7 @@ hash_map &hash_map::operator=(const hash_map &other)
 
 void hash_map::insert(int key, float value)
 {
-	if(!get_value()){
+	if(!get_value(key)){
 		_size++;	
 	}
 	key = (key < 0) ? key*-1 : key;
@@ -79,7 +79,7 @@ void hash_map::get_all_keys(int *keys)
 {
 
 		int idx = 0;
-		for(int i = 0; i < _capacity; i++){
+		for(int i = 0; i < (int)_capacity; i++){
 		_head[i].reset_iter();
 		while(!_head[i].iter_at_end()){
 			keys[idx] = *(_head[i].get_iter_value().value().first);
@@ -92,13 +92,13 @@ void hash_map::get_all_keys(int *keys)
 
 void hash_map::get_bucket_sizes(size_t *buckets)
 {
-    for(int i = 0; i < _capacity; i++)
+    for(int i = 0; i < (int)_capacity; i++)
         buckets[i] = _head[i].get_size();
 }
 
 hash_map::~hash_map()
 {
-	for(int i =0; i < _capacity; i++){
+	for(int i =0; i < (int)_capacity; i++){
 		_head[i].~hash_list();
 	}
 	delete _head;
