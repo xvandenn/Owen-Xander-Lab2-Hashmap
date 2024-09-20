@@ -25,7 +25,14 @@ hash_map &hash_map::operator=(const hash_map &other)
 
 void hash_map::insert(int key, float value)
 {
-
+	if(!get_value()){
+		_size++;	
+	}
+	int key = (key < 0) ? key*-1 : key;
+	int bin_num = key % _capacity;
+	
+	_head[bin_num].insert(key, value);
+		
 }
 
 std::optional<float> hash_map::get_value(int key) const
