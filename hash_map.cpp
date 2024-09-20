@@ -2,7 +2,7 @@
 
 hash_map(size_t capacity)
 {
- peepee
+    peepee
 }
 
 hash_map(const hash_map &other)
