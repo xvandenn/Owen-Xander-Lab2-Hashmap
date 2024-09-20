@@ -30,8 +30,8 @@ void hash_map::insert(int key, float value)
 
 std::optional<float> hash_map::get_value(int key) const
 {
-
-
+    int hash_key = (key < 0 ? key * -1: key) % _capacity;
+    return _head[hash_key].get_value();
 }
 
 bool hash_map::remove(int key)
