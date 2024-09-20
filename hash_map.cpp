@@ -3,8 +3,9 @@
 hash_map::hash_map(size_t capacity)
 {
     _capacity = capacity;
-    for(hash_list * head : _head)
-        head = new hash_list();
+    _head = new hash_list[capacity];
+    for(int i = 0; i < (int)_capacity; i++)
+        _head[i] = hash_list();
     _size = 0;
 }
 
