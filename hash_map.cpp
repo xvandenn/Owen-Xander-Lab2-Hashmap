@@ -49,7 +49,7 @@ void hash_map::insert(int key, float value)
 std::optional<float> hash_map::get_value(int key) const
 {
     int hash_key = (key < 0 ? key * -1: key) % _capacity;
-    return _head[hash_key].get_value();
+    return _head[hash_key].get_value(key);
 }
 
 bool hash_map::remove(int key)
@@ -58,7 +58,7 @@ bool hash_map::remove(int key)
 
     if(_head[hash_key].remove(key))
     { //only decrement size if something was removed
-        size -= 1;
+        _size -= 1;
         return true;
     }
     return false;
@@ -81,7 +81,7 @@ void hash_map::get_all_keys(int *keys)
 		for(int i = 0; i < _capacity; i++){
 		_head[i].reset_iter();
 		while(!_head[i].iter_at_end()){
-			keys[idx] = _head[i].get_iter_value().first;
+			keys[idx] = *(_head[i].get_iter_value().value().first);
 			idx++;
 			_head[i].increment_iter();
 		}
@@ -100,5 +100,5 @@ hash_map::~hash_map()
 	for(int i =0; i < _capacity; i++){
 		_head[i].~hash_list();
 	}
-	delete _head();
+	delete _head;
 }
