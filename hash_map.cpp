@@ -3,6 +3,8 @@
 hash_map::hash_map(size_t capacity)
 {
     _capacity = capacity;
+    for(hash_list * head : _head)
+        head = new hash_list();
 }
 
 hash_map::hash_map(const hash_map &other)
@@ -65,12 +67,13 @@ size_t hash_map::get_capacity() const
 
 void hash_map::get_all_keys(int *keys)
 {
-
+    
 }
 
 void hash_map::get_bucket_sizes(size_t *buckets)
 {
-
+    for(int i = 0; i < _capacity; i++)
+        buckets[i] = _head[i].get_size();
 }
 
 hash_map::~hash_map()
