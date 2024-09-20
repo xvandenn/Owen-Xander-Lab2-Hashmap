@@ -67,7 +67,17 @@ size_t hash_map::get_capacity() const
 
 void hash_map::get_all_keys(int *keys)
 {
-    
+
+		int idx = 0;
+		for(int i = 0; i < _capacity; i++){
+		_head[i].reset_iter();
+		while(!_head[i].iter_at_end()){
+			keys[idx] = _head[i].get_iter_value().first;
+			idx++;
+			_head[i].increment_iter();
+		}
+	}
+
 }
 
 void hash_map::get_bucket_sizes(size_t *buckets)
