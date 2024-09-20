@@ -44,8 +44,8 @@ void hash_map::insert(int key, float value)
 	if(!get_value(key)){
 		_size++;	
 	}
-	key = (key < 0) ? key*-1 : key;
-	int bin_num = key % _capacity;
+	int _key = (key < 0) ? key*-1 : key;
+	int bin_num = _key % _capacity;
 	
 	_head[bin_num].insert(key, value);
 		
