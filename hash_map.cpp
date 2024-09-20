@@ -36,7 +36,10 @@ std::optional<float> hash_map::get_value(int key) const
 
 bool hash_map::remove(int key)
 {
+    int hash_key = (key < 0 ? key * -1: key) % _capacity; //hashing function
 
+    if(_head[hash_key].remove(key)) //only decrement size if something was removed
+        size -= 1;
 }
 
 size_t hash_map::get_size() const
