@@ -29,7 +29,10 @@ hash_map &hash_map::operator=(const hash_map &other)
 	_capacity = other._capacity;
     _head = new hash_list[_capacity];
     for(int i = 0; i < (int)_capacity; i++)
+	{
+		_head[i] = hash_list();
 		_head[i] = other._head[i];
+	}
 	_size = other._size;
     return *this;
 
@@ -100,7 +103,6 @@ hash_map::~hash_map()
 {
 	for(int i =0; i < (int)_capacity; i++){
 		_head[i].~hash_list();
-		delete _head[i];
 	}
 	delete _head;
 }
