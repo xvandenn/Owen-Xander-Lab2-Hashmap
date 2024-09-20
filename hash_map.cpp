@@ -1,56 +1,56 @@
 #include "hash_map.h"
 
-hash_map(size_t capacity)
+hash_map::hash_map(size_t capacity)
 {
-    
+    _capacity = capacity;
 }
 
-hash_map(const hash_map &other)
-{
-
-}
-
-hash_map &operator=(const hash_map &other)
+hash_map::hash_map(const hash_map &other)
 {
 
 }
 
-void insert(int key, float value)
+hash_map &hash_map::operator=(const hash_map &other)
 {
 
 }
 
-std::optional<float> get_value(int key) const
+void hash_map::insert(int key, float value)
 {
 
 }
 
-bool remove(int key)
+std::optional<float> hash_map::get_value(int key) const
 {
 
 }
 
-size_t get_size() const
+bool hash_map::remove(int key)
 {
 
 }
 
-size_t get_capacity() const
+size_t hash_map::get_size() const
 {
 
 }
 
-void get_all_keys(int *keys)
+size_t hash_map::get_capacity() const
 {
 
 }
 
-void get_bucket_sizes(size_t *buckets)
+void hash_map::get_all_keys(int *keys)
 {
 
 }
 
-~hash_map()
+void hash_map::get_bucket_sizes(size_t *buckets)
+{
+
+}
+
+hash_map::~hash_map()
 {
 
 }
