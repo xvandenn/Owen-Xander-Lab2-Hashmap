@@ -17,7 +17,7 @@ hash_map::hash_map(const hash_map &other)
 		}
 		
 		_head = arr;
-		_size = size;
+		_size = other._size;
 		_capacity = other._capacity;
 }
 
@@ -39,7 +39,7 @@ void hash_map::insert(int key, float value)
 	if(!get_value()){
 		_size++;	
 	}
-	int key = (key < 0) ? key*-1 : key;
+	key = (key < 0) ? key*-1 : key;
 	int bin_num = key % _capacity;
 	
 	_head[bin_num].insert(key, value);
